@@ -1,4 +1,7 @@
+#! /usr/bin/env node
+
 import inquirer from "inquirer";
+
 const currency = {
     USD: 1,
     EUR: 0.92,
@@ -7,6 +10,7 @@ const currency = {
     AUD: 1.5,
     SAR: 3.75,
 };
+
 let userAnswer = await inquirer.prompt([
     {
         name: "from",
@@ -26,9 +30,12 @@ let userAnswer = await inquirer.prompt([
         type: "number",
     },
 ]);
+
 let fromAmount = currency[userAnswer.from];
 let toAmount = currency[userAnswer.to];
+
 let amount = userAnswer.amount;
 let baseAmount = amount / fromAmount;
 let convetedAmount = baseAmount * toAmount;
+
 console.log(convetedAmount.toFixed(4));
